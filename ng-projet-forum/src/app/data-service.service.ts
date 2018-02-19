@@ -64,8 +64,6 @@ export class DataService {
 
     let dto = {
       name: user.name,
-      topics : user.topics,
-      comments : user.comments,
     }
 
     return this.http.post(url, dto)

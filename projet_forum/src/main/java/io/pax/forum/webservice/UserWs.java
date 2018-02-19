@@ -1,11 +1,13 @@
 package io.pax.forum.webservice;
 
 import io.pax.forum.dao.UserDao;
+import io.pax.forum.domain.Topic;
 import io.pax.forum.domain.User;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,5 +34,21 @@ public class UserWs {
         return new UserDao().findUserById(userId);
     }
 
+    @POST
+
+    public User createUser(User user) {
+
+        List<Topic> topics = new ArrayList<>();
+
+        try {
+            int id = new UserDao().createUser(user.getName());
+
+            return new User(id, user.getName());
+
+
+        } catch (SQLException e) {
+            throw new ServerErrorException("DTB error", 500);
+        }
+    }
 
 }

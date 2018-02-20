@@ -8,6 +8,7 @@ import {Comment} from "./model/comment";
 @Injectable()
 
 export class DataService {
+  selectedUser: User;
 
   constructor(public http:HttpClient) { }
 
@@ -17,6 +18,14 @@ export class DataService {
       .get('http://localhost:8080/forum/api/users')
       .toPromise()
       .then(data => data as User[])
+  }
+
+  fetchTopics():Promise<Topic[]>{
+
+    return this.http
+      .get('http://localhost:8080/forum/api/topics')
+      .toPromise()
+      .then(data => data as Topic[])
   }
 
   fetchUsersWithTopics(user: User): Promise<User>{
@@ -63,7 +72,7 @@ export class DataService {
     let url = 'http://localhost:8080/forum/api/users'
 
     let dto = {
-      name: user.name,
+      name: user.name
     }
 
     return this.http.post(url, dto)

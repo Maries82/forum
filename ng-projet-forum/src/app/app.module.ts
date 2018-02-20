@@ -7,12 +7,14 @@ import { UserListViewComponent } from './user-list-view/user-list-view.component
 import {FormsModule} from "@angular/forms";
 import {DataService} from "./data-service.service";
 import {HttpClientModule} from "@angular/common/http";
+import { TopicViewComponent } from './topic-view/topic-view.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserListViewComponent
+    UserListViewComponent,
+    TopicViewComponent
   ],
   imports: [
     BrowserModule, FormsModule, HttpClientModule

@@ -1,22 +1,22 @@
-<div>
+<form>
   Users :
-  <select>
-    <option *ngFor="let user of users">
+  <select  name="user" (change)="details()" [(ngModel)]="indexedUser">
+    <option *ngFor="let user of users; let i = index;" value="{{ i }}">
       {{user.name}}
     </option>
   </select>
 
-  <h2>
-    User Topic
+  <h2 *ngIf="selectedUser">
+    {{selectedUser.name}} Topic
   </h2>
 
 
   <h3>Create new User</h3>
  <form>
     <input name="userName"
-           #userName [(ngModel)]="createdUser.name" (click)="createdUser.name = ''"> {{userName.value}}
+           #userName [(ngModel)]="createdUser.name" (click)="createdUser.name = ''">
 
     <button (click)="createUser()" > Create new User</button>
   </form>
 
-</div>
+</form>

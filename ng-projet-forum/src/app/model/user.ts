@@ -7,7 +7,7 @@ export class User{
   id: number;
   name: string;
   topics: Topic[] = [];
-  comments:Comment[]=[];
+
 
 
 }

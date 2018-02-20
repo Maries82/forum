@@ -120,10 +120,13 @@ public class TopicDao {
     public static void main(String[] args) throws SQLException {
 
         TopicDao dao= new TopicDao();
-        System.out.println(dao.createTopic(1,"JavaEE"));
-       // System.out.println(dao.deleteTopic(8));
+       // System.out.println(dao.createTopic(1,"JavaEE"));
+       // System.out.println(dao.deleteTopic(9));
+
         System.out.println(dao.listTopics().get(3).getName());
         System.out.println(dao.findTopicById(6).getName());
-        System.out.println(dao.findTopicByName("je"));
+        System.out.println(dao.findTopicByName("a"));
+
+        //tests ok
     }
 }

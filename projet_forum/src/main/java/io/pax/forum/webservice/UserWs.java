@@ -39,6 +39,7 @@ public class UserWs {
     public User createUser(User user) {
 
         List<Topic> topics = new ArrayList<>();
+        //init list de topic vide du user
 
         try {
             int id = new UserDao().createUser(user.getName());

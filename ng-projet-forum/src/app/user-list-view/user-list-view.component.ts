@@ -12,8 +12,9 @@ export class UserListViewComponent implements OnInit {
 
 
   users: User[];
-  selectedUser: User;
+  //selectedUser: User;
   selectedTopic: Topic;
+  theUser: User; // Utilisateur sélectionné dans la liste
 
   createdTopic:Topic = new Topic();
   createdUser: User = new User();
@@ -27,22 +28,16 @@ export class UserListViewComponent implements OnInit {
   ngOnInit() {
   }
 
-  details (user: User){
-    this.selectedUser = user;
-    this.createdTopic.user = user;
-    this.createdTopic.name = user.name + "'s topic"
+  details (){
+    //this.selectedUser = user;
+    /*this.createdTopic.user = user;
+    this.createdTopic.name = user.name + "'s topic"*/
 
-    console.log('You selected', user);
+    console.log('You selected ' + this.indexedUser);
     this.dataService
-      .fetchUsersWithTopics(user)
-      .then(user => this.selectedUser = user)
+      .fetchUsersWithTopics(this.users[this.indexedUser])
+      .then(user => this.dataService.selectedUser = user)
       .then(console.log);
-  }
-
-  createTopic(){
-    this.dataService.createTopic(this.createdTopic)
-      .then (() => this.selectedUser.topics.push(Object.assign({},this.createdTopic)))
-      .catch(e => alert(e));
   }
 
 

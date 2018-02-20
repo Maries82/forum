@@ -6,18 +6,22 @@ package io.pax.forum.domain;
 public class Topic {
     int id;
     String name;
+    int userId;
 
     public Topic(){}
 
-    public Topic(int id, String name) {
+    public Topic(int id, String name, int userId) {
         this.id = id;
         this.name = name;
+        this.userId = userId;
     }
 
     public int getId() {
         return this.id;
     }
-
+    public int getUserId(){
+        return this.userId;
+    }
     public void setId(int id) {
         this.id = id;
     }

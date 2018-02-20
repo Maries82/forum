@@ -66,6 +66,7 @@ public class TopicDao {
         List<Topic> topics = new ArrayList<>();
         while (resultSet.next()){
             String userName = resultSet.getString("name");
+
            topic = new Topic(topicId,userName);
         }
 

@@ -35,7 +35,6 @@ public class UserWs {
     }
 
     @POST
-
     public User createUser(User user) {
 
         List<Topic> topics = new ArrayList<>();

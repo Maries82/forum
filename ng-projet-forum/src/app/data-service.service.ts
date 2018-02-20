@@ -45,10 +45,10 @@ export class DataService {
 
     let dto = {
       name: topic.name,
-      user: topic.user,
+      user: this.selectedUser
      // comments: user.comments,
     };
-
+    console.log(dto);
     return this.http.post(url, dto)
       .toPromise()
       .then(data=> console.log('Success', data))

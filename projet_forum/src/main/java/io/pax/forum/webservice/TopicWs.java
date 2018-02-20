@@ -38,22 +38,31 @@ public class TopicWs {
 
 
     @POST
-
-
     public Topic createTopic(Topic topic) throws SQLException {
 
         //List<Comment> comments = new ArrayList<>();
-            //UserDao dao = new UserDao();
+        //UserDao dao = new UserDao();
 
-            //userId = 3;
+        //userId = 3;
 
-            try {
-                topic.setId(new TopicDao().createTopic(topic.getUserId(), topic.getName()));
-                return new Topic(topic.getId(), topic.getName(), topic.getUserId());
+/*            try {
+            topic.setId(new TopicDao().createTopic(topic.getUserId(), topic.getName()));
 
-            } catch (SQLException e) {
-                throw new ServerErrorException("DTB error", 500);
-            }
+            return new Topic(topic.getId(), topic.getName(), topic.getUserId());
+
+        } catch (SQLException e) {
+            throw new ServerErrorException("DTB error", 500);
+        }*/
+        try {
+            int id = new TopicDao().createTopic(topic.getUser().getId(), topic.getName());
+            Topic topic1 = new Topic(id, topic.getName());
+            topic1.setUser(topic.getUser());
+            return topic1;
+
+
+        } catch (SQLException e) {
+            throw new ServerErrorException("DTB error", 500);
+        }
 
 
     }
